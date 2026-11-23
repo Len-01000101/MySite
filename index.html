@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <style>
+            * {
+                margin: 0; box-sizing: border-box;
+            }
+
+            body
+            {
+                background: #0a0a0a; min-height: 100vh; color: #fff; font-family: monospace;
+            }
+
+            .pixel-bg 
+            {
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .cell
+            {
+                background: rgba(168, 85, 247, 0);
+            }
+
+            .glow
+            {
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                background: radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), rgba(168, 85, 247, 0.4), transparent 70%);
+                mix-blend-mode: screen;
+            }
+
+            #grid
+            {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 12px);
+                grid-template-rows: repeat(auto-fill, 12px);
+                gap: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+        Everett's site
+        </h1>
+        <p>
+        Type here matey ;) -Ev
+        </p>
+    </body>
+
+    <div class="pixel-bg">
+        <div class="glow"></div>
+        <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill, 12px);grid-template-rows:repeat(auto-fill, 12px);gap:1px;"></div>
+    </div>
+    <script>
+        const grid = document.getElementById('grid');
+        const colums = Math.ceil(innerWidth / 13);
+        const lines = Math.ceil(innerHeight / 13);
+        const cells = [];
+        
+        for (let i = 0; i < colums * lines; i++)
+        {
+            const l = document.createElement('div');
+            l.className = 'cell';
+            grid.appendChild(l);
+            cells.push(l);
+        }
+
+        addEventListener('mousemove', e =>
+        {
+            document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+            document.documentElement.style.setProperty('--my', e.clientY + 'px');
+            
+            const l = 100;
+            for(let i = 0; i < cells.length; i++)
+            {
+                const c = i % colums, r = Math.floor(i / colums);
+                const distance = Math.sqrt(Math.pow(c * 13 + 6 - e.clientX, 2) + Math.pow(r * 13 + 6 - e.clientY, 2))
+                cells[i].style.background = distance < l ? `rgba(168, 85, 247, ${1 - distance / l})` : '';
+            }
+        });
+    </script>
+</html>
