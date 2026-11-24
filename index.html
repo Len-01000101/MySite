@@ -58,7 +58,7 @@
     </div>
     <script>
         const grid = document.getElementById('grid');
-        const colums = Math.ceil((innerWidth + 1) / 13);
+        const colums = getComputedStyle(grid).gridTemplateColumns.split(' ').length;   
         const lines = Math.ceil((innerHeight + 1) / 13);
         const cells = [];
         
