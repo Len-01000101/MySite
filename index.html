@@ -20,7 +20,7 @@
 
             .cell
             {
-                heigth: 12px;
+                height: 12px;
                 width: 12px;
                 background: rgba(168, 85, 247, 0);
             }
@@ -38,6 +38,7 @@
             {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, 12px);
+                grid-template-rows: repeat(auto-fill, 12px);
                 gap: 1px;
             }
         </style>
@@ -57,8 +58,8 @@
     </div>
     <script>
         const grid = document.getElementById('grid');
-        const colums = Math.ceil(innerWidth / 13);
-        const lines = Math.ceil(innerHeight / 13);
+        const colums = Math.ceil((innerWidth + 1) / 13);
+        const lines = Math.ceil((innerHeight + 1) / 13);
         const cells = [];
         
         for (let i = 0; i < colums * lines; i++)
