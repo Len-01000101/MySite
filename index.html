@@ -4,36 +4,6 @@
             Elvrett :3
         </title>
         <style>
-            .dottie 
-            {
-                position: relative;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: #22c55e;
-            }
-
-            .dottie::after 
-            {
-                content: "";
-                position: absolute;
-                inset: 0;
-                border-radius: 50%;
-                background: inherit;
-                animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
-            }
-
-            @keyframes ping 
-            {
-                75%, 100% 
-                {
-                    scale: 2.4;
-                    opacity: 0;
-                }
-            }   
-        </style>
-        
-        <style>
             * 
             {
                 margin: 0; box-sizing: border-box;
@@ -79,7 +49,7 @@
         </style>
     </head>
     <body>
-        <h1 id='random-text'>'s Site</h1>
+        <h1 id='random-text'></h1><h1>'s site</h1>
         <script>
             const texts = 
             [
@@ -90,11 +60,39 @@
             document.getElementById('random-text').textContent = texts[randomIndex];
         </script> 
         
+        <style>
+            .dottie 
+            {
+                position: relative;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #22c55e;
+            }
+
+            .dottie::after 
+            {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                background: inherit;
+                animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+            }
+
+            @keyframes ping 
+            {
+                75%, 100% 
+                {
+                    scale: 2.4;
+                    opacity: 0;
+                }
+            }   
+        </style>
         <span class="dottie" aria-label="Online"></span>Actively online thinking about something stupid
         <br><br>
-        <p id='random-greeting'>
-            , I'm <p id='random-text'></p><br>
-        </p>
+        <p id='random-greeting'></p>
+        , I'm <p id='random-text'></p><br>
         <script>
             const texts = 
             [
